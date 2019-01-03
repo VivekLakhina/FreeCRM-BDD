@@ -8,6 +8,7 @@ import utils.BaseClass;
 
 public class CreateNewContact extends BaseClass{
 
+	//Find all the webelements on a webpage and create this webelement repository
 	@FindBy(name="first_name")
 	WebElement firstName;
 	
@@ -23,14 +24,17 @@ public class CreateNewContact extends BaseClass{
 	@FindBy(xpath="//td[@class='datafield']/preceding::td[@class='datatitle']/strong[text()='Name']")
 	WebElement createdUserName;
 	
+	//Contructor to initialize all the WebElements using Page Factory
 	public CreateNewContact(){
 		PageFactory.initElements(driver,this);
 	}
 	
+	// Wrapper/API for switching to frame
 	private void switchToFrame() {
 		driver.switchTo().frame("mainpanel");
 	}
 	
+	//API to create a new contact
 	public void createNewContact(String fName,String lName, String phone) {
 		
 		switchToFrame();
@@ -42,6 +46,7 @@ public class CreateNewContact extends BaseClass{
 		driver.switchTo().defaultContent();
 	}
 	
+	//API to check the whether contact is created or not
 	public boolean validateContactCreated() {
 		switchToFrame();
 		boolean userCreationFlag=createdUserName.isDisplayed();

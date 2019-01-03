@@ -9,6 +9,7 @@ import utils.BaseClass;
 
 public class HomePage extends BaseClass {
 
+	//Find all the webelements on a webpage and create this webelement repository
 	@FindBy(id = "handle_CRMBLOG")
 	WebElement crmProNewsTagOnHomePage;
 
@@ -18,10 +19,12 @@ public class HomePage extends BaseClass {
 	@FindBy(xpath = "//div[@id='navmenu']//a[@title='New Contact']")
 	WebElement newContact;
 
+	//Contructor to initialize all the WebElements using Page Factory
 	public HomePage() {
 		PageFactory.initElements(driver, this);
 	}
 	
+	// Wrapper/API for switching to frame
 	private void switchToFrame() {
 		driver.switchTo().frame("mainpanel");
 	}
